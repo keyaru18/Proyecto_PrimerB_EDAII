@@ -1,0 +1,740 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  spanish,
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Informe: Implementación de BFS y DFS para Análisis de Redes Sociales},
+  pdfauthor={Richard Tipantiza, Jairo Angulo , Tamara Benavides},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Informe: Implementación de BFS y DFS para Análisis de Redes
+Sociales}
+\author{Richard Tipantiza, Jairo Angulo , Tamara Benavides}
+\date{}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Tabla de Contenidos}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
+\section{OBJETIVOS}\label{objetivos}
+
+\begin{itemize}
+\item
+  Desarrollar un grafo de perfiles dentro de una red social,
+  implementando estructuras de datos para representar usuarios y
+  conexiones, junto con algoritmos de búsqueda BFS y DFS.
+\item
+  Implementar una estructura de grafo mediante POO, creando clases para
+  nodos, aristas y el grafo completo, permitiendo el modelado preciso de
+  conexiones en redes sociales.
+\end{itemize}
+
+\section{INTRODUCCIÓN}\label{introducciuxf3n}
+
+El proyecto desarrollado implementa los algoritmos BFS (Breadth-First
+Search) y DFS (Depth-First Search) para el análisis de conexiones en
+redes sociales, donde los nodos representan a los usuarios y las aristas
+simbolizan relaciones como amistades o seguidores. Como señala Coto
+(2003)(Netto, 2003), estos algoritmos son fundamentales para resolver
+problemas de procesamiento de grafos, donde el BFS ``es el algoritmo
+clásico para encontrar el camino más corto entre dos nodos específicos''
+(p.~13), mientras que el DFS explora conexiones profundas mediante
+recursividad. El algoritmo BFS se utiliza para identificar el camino más
+corto entre dos usuarios, como los amigos en común más cercanos,
+mientras que el algoritmo DFS se emplea para explorar comunidades o
+conexiones más profundas, como los seguidores de seguidores. La
+implementación basada en programación orientada a objetos (POO) aporta
+escalabilidad al sistema, al permitir la incorporación de atributos a
+los nodos, como intereses o ubicación, así como la asignación de pesos a
+las aristas, como la frecuencia de interacción.(Sánchez Torrubia \&
+Gutiérrez Revenga, 2006)
+
+\section{DESAROLLO}\label{desarollo}
+
+\subsection{Importación de
+librerías}\label{importaciuxf3n-de-libreruxedas}
+
+Vamos a importar las librerías necesarias para:
+
+\begin{itemize}
+\item
+  \texttt{collections.deque}: Para implementar colas eficientes en BFS
+\item
+  \texttt{networkx} y \texttt{matplotlib}: Para visualización de grafos
+\item
+  \texttt{ipywidgets}: Para interactividad en el notebook
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{from}\NormalTok{ collections }\ImportTok{import}\NormalTok{ deque}
+\ImportTok{import}\NormalTok{ networkx }\ImportTok{as}\NormalTok{ nx}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{from}\NormalTok{ IPython.display }\ImportTok{import}\NormalTok{ display}
+\ImportTok{import}\NormalTok{ ipywidgets }\ImportTok{as}\NormalTok{ widgets}
+
+\CommentTok{\# Configurar matplotlib para mostrar ventanas emergentes}
+\OperatorTok{\%}\NormalTok{matplotlib qt}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Clases Base: Arista y Nodo}\label{clases-base-arista-y-nodo}
+
+Definimos las estructuras fundamentales:
+
+\begin{itemize}
+\item
+  Arista: Conexión entre nodos con peso.
+\item
+  Nodo: Elemento básico del grafo con nombre y tipo.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Arista:}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, nodo1, nodo2, peso}\OperatorTok{=}\DecValTok{1}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.nodo1 }\OperatorTok{=}\NormalTok{ nodo1}
+        \VariableTok{self}\NormalTok{.nodo2 }\OperatorTok{=}\NormalTok{ nodo2}
+        \VariableTok{self}\NormalTok{.peso }\OperatorTok{=}\NormalTok{ peso}
+
+\KeywordTok{class}\NormalTok{ Nodo:}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, nombre, tipo}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.nombre }\OperatorTok{=}\NormalTok{ nombre}
+        \VariableTok{self}\NormalTok{.tipo }\OperatorTok{=}\NormalTok{ tipo  }\CommentTok{\# entrada, salida, edificio, etc.}
+
+    \KeywordTok{def} \FunctionTok{\_\_repr\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \ControlFlowTok{return} \VariableTok{self}\NormalTok{.nombre}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Clase Grafo: Estructura
+Principal}\label{clase-grafo-estructura-principal}
+
+Implementación con:
+
+\begin{itemize}
+\item
+  Lista de adyacencia para almacenar conexiones
+\item
+  Métodos para agregar nodos y aristas
+\item
+  Algoritmos BFS y DFS para búsqueda de rutas
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Grafo:}
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.nodos }\OperatorTok{=}\NormalTok{ \{\}}
+        \VariableTok{self}\NormalTok{.aristas }\OperatorTok{=}\NormalTok{ []}
+        \VariableTok{self}\NormalTok{.adj\_list }\OperatorTok{=}\NormalTok{ \{\}}
+
+    \KeywordTok{def}\NormalTok{ agregar\_nodo(}\VariableTok{self}\NormalTok{, nodo):}
+        \ControlFlowTok{if}\NormalTok{ nodo.nombre }\KeywordTok{not} \KeywordTok{in} \VariableTok{self}\NormalTok{.nodos:}
+            \VariableTok{self}\NormalTok{.nodos[nodo.nombre] }\OperatorTok{=}\NormalTok{ nodo}
+            \VariableTok{self}\NormalTok{.adj\_list[nodo] }\OperatorTok{=}\NormalTok{ []}
+
+    \KeywordTok{def}\NormalTok{ agregar\_arista(}\VariableTok{self}\NormalTok{, nodo1, nodo2, peso}\OperatorTok{=}\DecValTok{1}\NormalTok{):}
+        \ControlFlowTok{if}\NormalTok{ nodo1.nombre }\KeywordTok{in} \VariableTok{self}\NormalTok{.nodos }\KeywordTok{and}\NormalTok{ nodo2.nombre }\KeywordTok{in} \VariableTok{self}\NormalTok{.nodos:}
+\NormalTok{            arista }\OperatorTok{=}\NormalTok{ Arista(nodo1, nodo2, peso)}
+            \VariableTok{self}\NormalTok{.aristas.append(arista)}
+            \VariableTok{self}\NormalTok{.adj\_list[nodo1].append(nodo2)}
+            \VariableTok{self}\NormalTok{.adj\_list[nodo2].append(nodo1)}
+        \ControlFlowTok{else}\NormalTok{:}
+            \ControlFlowTok{raise} \PreprocessorTok{ValueError}\NormalTok{(}\StringTok{"Uno o ambos nodos no existen"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Algoritmo BFS (Breadth-First
+Search)}\label{algoritmo-bfs-breadth-first-search}
+
+\begin{itemize}
+\item
+  Encuentra la ruta más corta
+\item
+  Usa cola (FIFO) para explorar niveles
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{def}\NormalTok{ bfs(}\VariableTok{self}\NormalTok{, inicio, fin):}
+\NormalTok{        visitados }\OperatorTok{=}\NormalTok{ \{nodo: }\VariableTok{False} \ControlFlowTok{for}\NormalTok{ nodo }\KeywordTok{in} \VariableTok{self}\NormalTok{.nodos.values()\}}
+\NormalTok{        cola }\OperatorTok{=}\NormalTok{ deque([(inicio, [inicio])])}
+\NormalTok{        visitados[inicio] }\OperatorTok{=} \VariableTok{True}
+
+        \ControlFlowTok{while}\NormalTok{ cola:}
+\NormalTok{            actual, camino }\OperatorTok{=}\NormalTok{ cola.popleft()}
+            \ControlFlowTok{if}\NormalTok{ actual }\OperatorTok{==}\NormalTok{ fin:}
+                \ControlFlowTok{return}\NormalTok{ camino}
+            \ControlFlowTok{for}\NormalTok{ vecino }\KeywordTok{in} \VariableTok{self}\NormalTok{.adj\_list[actual]:}
+                \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ visitados[vecino]:}
+\NormalTok{                    visitados[vecino] }\OperatorTok{=} \VariableTok{True}
+\NormalTok{                    cola.append((vecino, camino }\OperatorTok{+}\NormalTok{ [vecino]))}
+        \ControlFlowTok{return} \VariableTok{None}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Algoritmo DFS (Depth-First
+Search)}\label{algoritmo-dfs-depth-first-search}
+
+\begin{itemize}
+\item
+  Explora ramas completas antes de retroceder
+\item
+  Implementación recursiva
+\item
+  Útil para encontrar componentes conectados
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{def}\NormalTok{ dfs(}\VariableTok{self}\NormalTok{, inicio, destino):}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Iniciando DFS (recursivo)..."}\NormalTok{)}
+\NormalTok{        searched }\OperatorTok{=}\NormalTok{ \{nodo: }\VariableTok{False} \ControlFlowTok{for}\NormalTok{ nodo }\KeywordTok{in} \VariableTok{self}\NormalTok{.nodos.values()\}}
+\NormalTok{        parents }\OperatorTok{=}\NormalTok{ \{\}}
+\NormalTok{        componentR }\OperatorTok{=}\NormalTok{ []}
+
+        \KeywordTok{def}\NormalTok{ \_dfs(nodo, parent}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+\NormalTok{            componentR.append(nodo)}
+\NormalTok{            searched[nodo] }\OperatorTok{=} \VariableTok{True}
+\NormalTok{            parents[nodo] }\OperatorTok{=}\NormalTok{ parent}
+
+            \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Estado de búsqueda en nodo }\SpecialCharTok{\{}\NormalTok{nodo}\SpecialCharTok{\}}\SpecialStringTok{:"}\NormalTok{)}
+            \BuiltInTok{print}\NormalTok{(\{n.nombre: v }\ControlFlowTok{for}\NormalTok{ n, v }\KeywordTok{in}\NormalTok{ searched.items()\})}
+            \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Vecinos de }\SpecialCharTok{\{}\NormalTok{nodo}\SpecialCharTok{\}}\SpecialStringTok{: }\SpecialCharTok{\{}\VariableTok{self}\SpecialCharTok{.}\NormalTok{adj\_list[nodo]}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+            \BuiltInTok{print}\NormalTok{()}
+
+            \ControlFlowTok{if}\NormalTok{ nodo }\OperatorTok{==}\NormalTok{ destino:}
+                \ControlFlowTok{return} \VariableTok{True}
+
+            \ControlFlowTok{for}\NormalTok{ vecino }\KeywordTok{in} \VariableTok{self}\NormalTok{.adj\_list[nodo]:}
+                \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ searched[vecino]:}
+                    \ControlFlowTok{if}\NormalTok{ \_dfs(vecino, nodo):}
+                        \ControlFlowTok{return} \VariableTok{True}
+                    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Finaliza }\SpecialCharTok{\{}\NormalTok{vecino}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+                    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Vuelve a }\SpecialCharTok{\{}\NormalTok{nodo}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+                    \BuiltInTok{print}\NormalTok{()}
+
+            \ControlFlowTok{return} \VariableTok{False}
+
+\NormalTok{        encontrado }\OperatorTok{=}\NormalTok{ \_dfs(inicio)}
+
+        \ControlFlowTok{if}\NormalTok{ encontrado:}
+\NormalTok{            camino }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{            actual }\OperatorTok{=}\NormalTok{ destino}
+            \ControlFlowTok{while}\NormalTok{ actual }\KeywordTok{is} \KeywordTok{not} \VariableTok{None}\NormalTok{:}
+\NormalTok{                camino.append(actual)}
+\NormalTok{                actual }\OperatorTok{=}\NormalTok{ parents.get(actual)}
+\NormalTok{            camino.reverse()}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{" Ruta encontrada con DFS:"}\NormalTok{)}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{" → "}\NormalTok{.join(n.nombre }\ControlFlowTok{for}\NormalTok{ n }\KeywordTok{in}\NormalTok{ camino))}
+            \ControlFlowTok{return}\NormalTok{ camino}
+        \ControlFlowTok{else}\NormalTok{:}
+            \BuiltInTok{print}\NormalTok{(}\StringTok{" No se encontró ruta con DFS"}\NormalTok{)}
+            \ControlFlowTok{return} \VariableTok{None}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Función de Construcción del Grafo
+Demo}\label{funciuxf3n-de-construcciuxf3n-del-grafo-demo}
+
+Crea un grafo predefinido que simula una red social con:
+
+\begin{itemize}
+\item
+  14 nodos (usuarios)
+\item
+  20 conexiones bidireccionales
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ construir\_grafo\_demo():}
+\NormalTok{    grafo }\OperatorTok{=}\NormalTok{ Grafo()}
+\NormalTok{    nodos }\OperatorTok{=}\NormalTok{ \{}
+        \StringTok{"Jairo"}\NormalTok{: Nodo(}\StringTok{"Jairo"}\NormalTok{, }\StringTok{"entrada"}\NormalTok{),}
+        \StringTok{"Marco"}\NormalTok{: Nodo(}\StringTok{"Marco"}\NormalTok{, }\StringTok{"punto\_interes"}\NormalTok{),}
+        \StringTok{"Daniela"}\NormalTok{: Nodo(}\StringTok{"Daniela"}\NormalTok{, }\StringTok{"salida"}\NormalTok{),}
+        \StringTok{"Camila"}\NormalTok{: Nodo(}\StringTok{"Camila"}\NormalTok{, }\StringTok{"punto\_interes"}\NormalTok{),}
+        \StringTok{"Eve"}\NormalTok{: Nodo(}\StringTok{"Eve"}\NormalTok{, }\StringTok{"punto\_interes"}\NormalTok{),}
+        \StringTok{"Richard"}\NormalTok{: Nodo(}\StringTok{"Richard"}\NormalTok{, }\StringTok{"punto\_interes"}\NormalTok{),}
+        \StringTok{"Grace"}\NormalTok{: Nodo(}\StringTok{"Grace"}\NormalTok{, }\StringTok{"edificio"}\NormalTok{),}
+        \StringTok{"Estefano"}\NormalTok{: Nodo(}\StringTok{"Estefano"}\NormalTok{, }\StringTok{"salida"}\NormalTok{),}
+        \StringTok{"Lenin"}\NormalTok{: Nodo(}\StringTok{"Lenin"}\NormalTok{, }\StringTok{"usuario"}\NormalTok{),}
+        \StringTok{"Lorena"}\NormalTok{: Nodo(}\StringTok{"Lorena"}\NormalTok{, }\StringTok{"usuario"}\NormalTok{),}
+        \StringTok{"Eddy"}\NormalTok{: Nodo(}\StringTok{"Eddy"}\NormalTok{, }\StringTok{"usuario"}\NormalTok{),}
+        \StringTok{"Laura"}\NormalTok{: Nodo(}\StringTok{"Laura"}\NormalTok{, }\StringTok{"usuario"}\NormalTok{),}
+        \StringTok{"Miguel"}\NormalTok{: Nodo(}\StringTok{"Miguel"}\NormalTok{, }\StringTok{"usuario"}\NormalTok{),}
+        \StringTok{"Tamara"}\NormalTok{: Nodo(}\StringTok{"Tamara"}\NormalTok{, }\StringTok{"usuario"}\NormalTok{)}
+\NormalTok{    \}}
+
+    \ControlFlowTok{for}\NormalTok{ nodo }\KeywordTok{in}\NormalTok{ nodos.values():}
+\NormalTok{        grafo.agregar\_nodo(nodo)}
+
+\NormalTok{    conexiones }\OperatorTok{=}\NormalTok{ [}
+\NormalTok{        (}\StringTok{"Jairo"}\NormalTok{, }\StringTok{"Eve"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Eve"}\NormalTok{, }\StringTok{"Daniela"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Camila"}\NormalTok{, }\StringTok{"Richard"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Richard"}\NormalTok{, }\StringTok{"Grace"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Grace"}\NormalTok{, }\StringTok{"Daniela"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Jairo"}\NormalTok{, }\StringTok{"Marco"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Marco"}\NormalTok{, }\StringTok{"Estefano"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Estefano"}\NormalTok{, }\StringTok{"Richard"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Estefano"}\NormalTok{, }\StringTok{"Eve"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Estefano"}\NormalTok{, }\StringTok{"Camila"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Lenin"}\NormalTok{, }\StringTok{"Marco"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Lenin"}\NormalTok{, }\StringTok{"Lorena"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Lorena"}\NormalTok{, }\StringTok{"Eddy"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Eddy"}\NormalTok{, }\StringTok{"Laura"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Laura"}\NormalTok{, }\StringTok{"Eve"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Miguel"}\NormalTok{, }\StringTok{"Eddy"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Miguel"}\NormalTok{, }\StringTok{"Richard"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Tamara"}\NormalTok{, }\StringTok{"Lorena"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Tamara"}\NormalTok{, }\StringTok{"Camila"}\NormalTok{),}
+\NormalTok{        (}\StringTok{"Grace"}\NormalTok{, }\StringTok{"Tamara"}\NormalTok{)}
+\NormalTok{    ]}
+
+    \ControlFlowTok{for}\NormalTok{ a, b }\KeywordTok{in}\NormalTok{ conexiones:}
+\NormalTok{        grafo.agregar\_arista(nodos[a], nodos[b])}
+
+    \ControlFlowTok{return}\NormalTok{ grafo}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Visualización Interactiva del
+Grafo}\label{visualizaciuxf3n-interactiva-del-grafo}
+
+Función para dibujar el grafo usando networkx y matplotlib, con
+capacidad para seleccionar nodos haciendo clic. Características:
+
+\begin{itemize}
+\item
+  Layout Kamada-Kawai para distribución orgánica
+\item
+  Eventos de clic para selección interactiva
+\item
+  Temporización para mantener la figura activa
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ dibujar\_grafo\_interactivo(grafo):}
+\NormalTok{    G }\OperatorTok{=}\NormalTok{ nx.Graph()}
+    \ControlFlowTok{for}\NormalTok{ nodo }\KeywordTok{in}\NormalTok{ grafo.nodos.values():}
+\NormalTok{        G.add\_node(nodo.nombre)}
+    \ControlFlowTok{for}\NormalTok{ arista }\KeywordTok{in}\NormalTok{ grafo.aristas:}
+\NormalTok{        G.add\_edge(arista.nodo1.nombre, arista.nodo2.nombre)}
+
+\NormalTok{    pos }\OperatorTok{=}\NormalTok{ nx.kamada\_kawai\_layout(G)}
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{14}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+\NormalTok{    nx.draw(G, pos, with\_labels}\OperatorTok{=}\VariableTok{True}\NormalTok{, node\_color}\OperatorTok{=}\StringTok{\textquotesingle{}lightblue\textquotesingle{}}\NormalTok{, edge\_color}\OperatorTok{=}\StringTok{\textquotesingle{}gray\textquotesingle{}}\NormalTok{,}
+\NormalTok{            node\_size}\OperatorTok{=}\DecValTok{2000}\NormalTok{, font\_size}\OperatorTok{=}\DecValTok{10}\NormalTok{, width}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+    
+\NormalTok{    plt.title(}\StringTok{" Red Social {-} Selecciona dos usuarios para buscar la ruta"}\NormalTok{)}
+
+\NormalTok{    seleccionados }\OperatorTok{=}\NormalTok{ []}
+
+    \KeywordTok{def}\NormalTok{ onclick(event):}
+        \ControlFlowTok{if}\NormalTok{ event.inaxes }\KeywordTok{is} \KeywordTok{not}\NormalTok{ ax:}
+            \ControlFlowTok{return}
+\NormalTok{        x, y }\OperatorTok{=}\NormalTok{ event.xdata, event.ydata}
+\NormalTok{        nodo\_cercano }\OperatorTok{=} \BuiltInTok{min}\NormalTok{(pos, key}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ n: (pos[n][}\DecValTok{0}\NormalTok{]}\OperatorTok{{-}}\NormalTok{x)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\NormalTok{ (pos[n][}\DecValTok{1}\NormalTok{]}\OperatorTok{{-}}\NormalTok{y)}\OperatorTok{**}\DecValTok{2}\NormalTok{)}
+        \ControlFlowTok{if}\NormalTok{ nodo\_cercano }\KeywordTok{not} \KeywordTok{in}\NormalTok{ seleccionados:}
+\NormalTok{            seleccionados.append(nodo\_cercano)}
+            \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Seleccionado: }\SpecialCharTok{\{}\NormalTok{nodo\_cercano}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+        \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(seleccionados) }\OperatorTok{==} \DecValTok{2}\NormalTok{:}
+\NormalTok{            fig.canvas.mpl\_disconnect(cid)}
+\NormalTok{            plt.close(fig)}
+
+\NormalTok{    cid }\OperatorTok{=}\NormalTok{ fig.canvas.mpl\_connect(}\StringTok{\textquotesingle{}button\_press\_event\textquotesingle{}}\NormalTok{, onclick)}
+\NormalTok{    plt.show()}
+
+    \ControlFlowTok{while}\NormalTok{ plt.fignum\_exists(fig.number):}
+\NormalTok{        plt.pause(}\FloatTok{0.1}\NormalTok{)}
+
+    \ControlFlowTok{return}\NormalTok{ seleccionados}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Visualización de Rutas}\label{visualizaciuxf3n-de-rutas}
+
+Función para resaltar rutas encontradas:
+
+\begin{itemize}
+\item
+  Nodos en rojo: Ruta encontrada
+\item
+  Aristas en rojo: Conexiones utilizadas
+\item
+  Diferenciación visual entre BFS/DFS
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ dibujar\_ruta(grafo, ruta, titulo):}
+\NormalTok{    G }\OperatorTok{=}\NormalTok{ nx.Graph()}
+    \ControlFlowTok{for}\NormalTok{ nodo }\KeywordTok{in}\NormalTok{ grafo.nodos.values():}
+\NormalTok{        G.add\_node(nodo.nombre)}
+    \ControlFlowTok{for}\NormalTok{ arista }\KeywordTok{in}\NormalTok{ grafo.aristas:}
+\NormalTok{        G.add\_edge(arista.nodo1.nombre, arista.nodo2.nombre)}
+
+\NormalTok{    pos }\OperatorTok{=}\NormalTok{ nx.kamada\_kawai\_layout(G)}
+
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{14}\NormalTok{, }\DecValTok{10}\NormalTok{))}
+
+\NormalTok{    nombres\_ruta }\OperatorTok{=}\NormalTok{ [n.nombre }\ControlFlowTok{for}\NormalTok{ n }\KeywordTok{in}\NormalTok{ ruta]}
+\NormalTok{    colores\_nodos }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}red\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ nodo }\KeywordTok{in}\NormalTok{ nombres\_ruta }\ControlFlowTok{else} \StringTok{\textquotesingle{}lightblue\textquotesingle{}} \ControlFlowTok{for}\NormalTok{ nodo }\KeywordTok{in}\NormalTok{ G.nodes()]}
+\NormalTok{    aristas\_ruta }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{zip}\NormalTok{(nombres\_ruta[:}\OperatorTok{{-}}\DecValTok{1}\NormalTok{], nombres\_ruta[}\DecValTok{1}\NormalTok{:]))}
+\NormalTok{    colores\_aristas }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}red\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ (u, v) }\KeywordTok{in}\NormalTok{ aristas\_ruta }\KeywordTok{or}\NormalTok{ (v, u) }\KeywordTok{in}\NormalTok{ aristas\_ruta }\ControlFlowTok{else} \StringTok{\textquotesingle{}gray\textquotesingle{}} \ControlFlowTok{for}\NormalTok{ u, v }\KeywordTok{in}\NormalTok{ G.edges()]}
+
+\NormalTok{    nx.draw(G, pos, with\_labels}\OperatorTok{=}\VariableTok{True}\NormalTok{, node\_color}\OperatorTok{=}\NormalTok{colores\_nodos, edge\_color}\OperatorTok{=}\NormalTok{colores\_aristas,}
+\NormalTok{            node\_size}\OperatorTok{=}\DecValTok{2000}\NormalTok{, font\_size}\OperatorTok{=}\DecValTok{10}\NormalTok{, width}\OperatorTok{=}\DecValTok{2}\NormalTok{, ax}\OperatorTok{=}\NormalTok{ax)}
+
+    \CommentTok{\# Título informativo con enfoque de red social y tipo de algoritmo}
+    \ControlFlowTok{if} \StringTok{"BFS"} \KeywordTok{in}\NormalTok{ titulo:}
+\NormalTok{        plt.title(}\StringTok{" BFS {-} Ruta más corta entre dos usuarios en la red social"}\NormalTok{)}
+    \ControlFlowTok{elif} \StringTok{"DFS"} \KeywordTok{in}\NormalTok{ titulo:}
+\NormalTok{        plt.title(}\StringTok{"🔶 DFS {-} Ruta profunda entre dos usuarios en la red social"}\NormalTok{)}
+    \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{        plt.title(}\SpecialStringTok{f" Ruta encontrada {-} }\SpecialCharTok{\{}\NormalTok{titulo}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\NormalTok{    plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Función Principal de
+Simulación}\label{funciuxf3n-principal-de-simulaciuxf3n}
+
+Orquesta todo el flujo:
+
+\begin{itemize}
+\item
+  Construye el grafo demo
+\item
+  Permite selección interactiva
+\item
+  Ejecuta BFS y DFS
+\item
+  Visualiza resultados
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ ejecutar\_simulacion():}
+\NormalTok{    grafo }\OperatorTok{=}\NormalTok{ construir\_grafo\_demo()}
+    
+    \BuiltInTok{print}\NormalTok{(}\StringTok{" Haz clic en el nodo de inicio y luego en el de destino..."}\NormalTok{)}
+\NormalTok{    seleccionados }\OperatorTok{=}\NormalTok{ dibujar\_grafo\_interactivo(grafo)}
+    
+    \ControlFlowTok{if} \BuiltInTok{len}\NormalTok{(seleccionados) }\OperatorTok{!=} \DecValTok{2}\NormalTok{:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"❌ Debes seleccionar exactamente 2 nodos"}\NormalTok{)}
+        \ControlFlowTok{return}
+    
+\NormalTok{    inicio, fin }\OperatorTok{=}\NormalTok{ seleccionados}
+\NormalTok{    nodo\_inicio }\OperatorTok{=}\NormalTok{ grafo.nodos[inicio]}
+\NormalTok{    nodo\_fin }\OperatorTok{=}\NormalTok{ grafo.nodos[fin]}
+    
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\CharTok{\textbackslash{}n}\SpecialStringTok{Ruta desde }\SpecialCharTok{\{}\NormalTok{inicio}\SpecialCharTok{\}}\SpecialStringTok{ hasta }\SpecialCharTok{\{}\NormalTok{fin}\SpecialCharTok{\}}\SpecialStringTok{:"}\NormalTok{)}
+    
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{ Ejecutando BFS (Ruta más corta)..."}\NormalTok{)}
+\NormalTok{    ruta\_bfs }\OperatorTok{=}\NormalTok{ grafo.bfs(nodo\_inicio, nodo\_fin)}
+    \ControlFlowTok{if}\NormalTok{ ruta\_bfs:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{" → "}\NormalTok{.join(n.nombre }\ControlFlowTok{for}\NormalTok{ n }\KeywordTok{in}\NormalTok{ ruta\_bfs))}
+\NormalTok{        dibujar\_ruta(grafo, ruta\_bfs, }\StringTok{"BFS {-} Ruta más corta"}\NormalTok{)}
+    \ControlFlowTok{else}\NormalTok{:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"No se encontró ruta con BFS"}\NormalTok{)}
+    
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{🔶 Ejecutando DFS (Ruta más profunda)..."}\NormalTok{)}
+\NormalTok{    ruta\_dfs }\OperatorTok{=}\NormalTok{ grafo.dfs(nodo\_inicio, nodo\_fin)}
+    \ControlFlowTok{if}\NormalTok{ ruta\_dfs:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{" → "}\NormalTok{.join(n.nombre }\ControlFlowTok{for}\NormalTok{ n }\KeywordTok{in}\NormalTok{ ruta\_dfs))}
+\NormalTok{        dibujar\_ruta(grafo, ruta\_dfs, }\StringTok{"DFS {-} Ruta más profunda"}\NormalTok{)}
+    \ControlFlowTok{else}\NormalTok{:}
+        \BuiltInTok{print}\NormalTok{(}\StringTok{"No se encontró ruta con DFS"}\NormalTok{)}
+
+\CommentTok{\# Ejecutar la simulación}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"=== Simulador de Conexiones en Red Social ==="}\NormalTok{)}
+\NormalTok{ejecutar\_simulacion()}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Resultados}\label{resultados}
+
+\begin{itemize}
+\tightlist
+\item
+  BFS
+\end{itemize}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{attachment:image.png}}
+
+}
+
+\caption{Ruta corta entre Daniela y Eddy}
+
+\end{figure}%
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-netto2003grafos}
+Netto, P. O. B. (2003). \emph{Grafos: teoria, modelos, algoritmos}.
+Editora Blucher.
+
+\bibitem[\citeproctext]{ref-sanchez2006tutorial}
+Sánchez Torrubia, M. G., \& Gutiérrez Revenga, S. (2006). \emph{Tutorial
+interactivo para la ense{ñ}anza y el aprendizaje de los algoritmos de
+b{ú}squeda en anchura y en profundidad}.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}
